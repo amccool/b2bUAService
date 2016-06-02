@@ -17,9 +17,13 @@ namespace VOIPService
 
                 x.Service<SIPService>(s =>
                 {
-                    s.ConstructUsing<(sc => {
-                        sc.ConfigFileName("OrleansConfiguration.xml");
+                    //s.ConstructUsing(() => new SIPService(null));
+
+                    s.ConstructUsing(sc =>
+                    {
+                        sc.XXXX();
                     });
+
 
                     s.WhenStarted(service => service.Start());
 
@@ -29,8 +33,11 @@ namespace VOIPService
                     //    c.AddHost(port: 8080);
                     //});
                 });
+
+
                 x.StartAutomatically();
-                x.SetServiceName("r5 voip service");
+                x.SetDescription("r5 voip service");
+                x.SetServiceName("voipservice");
                 x.RunAsNetworkService();
             });
         }

@@ -102,8 +102,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceConfiguratorExtensions.cs" />
     <Compile Include="SIPService.cs" />
     <Compile Include="SIPServiceConfigurator.cs" />
   </ItemGroup>
