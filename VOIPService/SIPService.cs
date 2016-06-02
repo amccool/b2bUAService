@@ -41,8 +41,7 @@ namespace VOIPService
 
             IAccount account = ua.AccountManager.Register(o =>
             {
-
-                return o.At("localhost").WithExtension("BRC1").Register();
+                return o.At("192.168.2.50").WithExtension("rb-test").WithPassword("rb-test").Register();
             });
 
             return true;
@@ -50,37 +49,30 @@ namespace VOIPService
 
         private void AccountManager_AccountStateChanged(object sender, pjsip4net.Accounts.AccountStateChangedEventArgs e)
         {
-            //throw new System.NotImplementedException();
         }
 
         private void CallManager_Ring(object sender, pjsip4net.Calls.RingEventArgs e)
         {
-            //throw new System.NotImplementedException();
         }
 
         private void CallManager_IncomingDtmfDigit(object sender, pjsip4net.Calls.DtmfEventArgs e)
         {
-            //throw new System.NotImplementedException();
         }
 
         private void CallManager_IncomingCall(object sender, pjsip4net.Core.Utils.EventArgs<ICall> e)
         {
-            //throw new System.NotImplementedException();
         }
 
         private void CallManager_CallTransfer(object sender, pjsip4net.Calls.CallTransferEventArgs e)
         {
-           // throw new System.NotImplementedException();
         }
 
         private void CallManager_CallStateChanged(object sender, pjsip4net.Calls.CallStateChangedEventArgs e)
         {
-           // throw new System.NotImplementedException();
         }
 
         private void CallManager_CallRedirected(object sender, pjsip4net.Calls.CallRedirectedEventArgs e)
         {
-          //  throw new System.NotImplementedException();
         }
 
         private void Ua_Log(object sender, pjsip4net.LogEventArgs e)
