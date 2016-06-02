@@ -2,6 +2,7 @@
 using pjsip4net.Core.Configuration;
 using pjsip4net.Interfaces;
 using System;
+using System.Diagnostics;
 
 namespace VOIPService
 {
@@ -84,7 +85,7 @@ namespace VOIPService
 
         private void Ua_Log(object sender, pjsip4net.LogEventArgs e)
         {
-          //  throw new System.NotImplementedException();
+            Trace.WriteLine(e.Data);
         }
 
         public bool Stop()
