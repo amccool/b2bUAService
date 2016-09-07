@@ -28,21 +28,23 @@ namespace VOIPService
             //ua.CallManager.MaxCalls = 100;
             ua.CallManager.Ring += CallManager_Ring;
 
-
-
             ua.AccountManager.AccountStateChanged += AccountManager_AccountStateChanged;
-
-
 
             ua.Start();
 
             var da = ua.AccountManager.DefaultAccount;
 
-
             IAccount account = ua.AccountManager.Register(o =>
             {
-                return o.At("192.168.2.50").WithExtension("rb-test").WithPassword("rb-test").Register();
+                return o.At("devint.dev-r5ead.net").WithExtension("alex.mccool").WithPassword(string.Empty).Register();
+                //return o.At("officesip.local").WithExtension("rb-test").WithPassword(string.Empty).Register();
             });
+
+
+            //ua.CallManager.MakeCall(x => x.To("998101").At("devint.dev-r5ead.net")//.Through(_args.Through)
+            //                //.From(_agent.AccountManager.GetAccountById(Convert.ToInt32(_args.From)))
+            //                .Call());
+
 
             return true;
         }

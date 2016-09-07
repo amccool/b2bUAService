@@ -42,16 +42,18 @@ namespace VOIPService
                 transportType.Port = 5080;
                 transportType.PublicAddress = "0.0.0.0";
 
-            var udp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
-                    (pjsip4net.Core.TransportType.Udp, transportType);
-                o.RegisterTransport(udp);
+            //var udp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
+            //        (pjsip4net.Core.TransportType.Udp, transportType);
+            //    o.RegisterTransport(udp);
 
                 var tcp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
                     (pjsip4net.Core.TransportType.Tcp, transportType);
                 o.RegisterTransport(tcp);
 
+                //o.Config.StunDomain
 
-                o.Config.OutboundProxies.Add(@"sip:192.168.2.50:5060");
+                //o.Config.OutboundProxies.Add(@"sip:192.168.2.50:5060");
+                //o.Config.OutboundProxies.Add(@"sip:127.0.0.1:5060");
 
             });
 
