@@ -46,9 +46,9 @@ namespace VOIPService
                     (pjsip4net.Core.TransportType.Udp, transportType);
                 o.RegisterTransport(udp);
 
-                //var tcp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
-                //    (pjsip4net.Core.TransportType.Tcp, transportType);
-                //o.RegisterTransport(tcp);
+                var tcp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
+                    (pjsip4net.Core.TransportType.Tcp, transportType);
+                o.RegisterTransport(tcp);
 
 
                 o.Config.OutboundProxies.Add(@"sip:192.168.2.50:5060");

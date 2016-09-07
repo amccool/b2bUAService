@@ -49,30 +49,37 @@ namespace VOIPService
 
         private void AccountManager_AccountStateChanged(object sender, pjsip4net.Accounts.AccountStateChangedEventArgs e)
         {
+            Trace.WriteLine(e.StatusText);
         }
 
         private void CallManager_Ring(object sender, pjsip4net.Calls.RingEventArgs e)
         {
+            Trace.WriteLine(e.CallId);
         }
 
         private void CallManager_IncomingDtmfDigit(object sender, pjsip4net.Calls.DtmfEventArgs e)
         {
+            Trace.WriteLine("{e.CallId} {e.Digit}");
         }
 
         private void CallManager_IncomingCall(object sender, pjsip4net.Core.Utils.EventArgs<ICall> e)
         {
+            Trace.WriteLine("{e.Data}");
         }
 
         private void CallManager_CallTransfer(object sender, pjsip4net.Calls.CallTransferEventArgs e)
         {
+            Trace.WriteLine(e.Destination);
         }
 
         private void CallManager_CallStateChanged(object sender, pjsip4net.Calls.CallStateChangedEventArgs e)
         {
+            Trace.WriteLine(e.InviteState);
         }
 
         private void CallManager_CallRedirected(object sender, pjsip4net.Calls.CallRedirectedEventArgs e)
         {
+            Trace.WriteLine(e.Target);
         }
 
         private void Ua_Log(object sender, pjsip4net.LogEventArgs e)
