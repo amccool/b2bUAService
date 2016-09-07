@@ -13,15 +13,13 @@ namespace VOIPService
         {
              HostFactory.Run(x =>
             {
-                //x.UseNLog();
-
                 x.Service<SIPService>(s =>
                 {
-                    //s.ConstructUsing(() => new SIPService(null));
-
                     s.ConstructUsing(sc =>
                     {
-                        sc.XXXX();
+                        //sc.UseConfig();
+                        sc.UseTcp();
+                        sc.UseUdp();  // use only tcp OR udp , not both
                     });
 
 

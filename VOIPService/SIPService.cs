@@ -36,8 +36,9 @@ namespace VOIPService
 
             IAccount account = ua.AccountManager.Register(o =>
             {
-                return o.At("devint.dev-r5ead.net").WithExtension("alex.mccool").WithPassword(string.Empty).Register();
+                //return o.At("doink").WithExtension("alex.mccool").WithPassword("password").Register();
                 //return o.At("officesip.local").WithExtension("rb-test").WithPassword(string.Empty).Register();
+                return o.At("devint.dev-r5ead.net").WithExtension("alex.mccool").WithPassword(string.Empty).Register();
             });
 
 
