@@ -2,6 +2,7 @@
 using pjsip4net.Core.Configuration;
 using pjsip4net.Interfaces;
 using System;
+using System.Diagnostics;
 
 namespace VOIPService
 {
@@ -27,64 +28,69 @@ namespace VOIPService
             //ua.CallManager.MaxCalls = 100;
             ua.CallManager.Ring += CallManager_Ring;
 
-
-
             ua.AccountManager.AccountStateChanged += AccountManager_AccountStateChanged;
-
-
 
             ua.Start();
 
             var da = ua.AccountManager.DefaultAccount;
 
-
             IAccount account = ua.AccountManager.Register(o =>
             {
-
-                return o.At("localhost").WithExtension("BRC1").Register();
+                //return o.At("doink").WithExtension("alex.mccool").WithPassword("password").Register();
+                //return o.At("officesip.local").WithExtension("rb-test").WithPassword(string.Empty).Register();
+                return o.At("devint.dev-r5ead.net").WithExtension("phoneservice").WithPassword(string.Empty).Register();
             });
+
+
+            var call = ua.CallManager.MakeCall(
+                x => x.To("998101").At("devint.dev-r5ead.net").From(account)
+            //.Through(_args.Through)
+            //.From(_agent.AccountManager.GetAccountById(Convert.ToInt32(_args.From)))
+            .Call());
+
+
 
             return true;
         }
 
         private void AccountManager_AccountStateChanged(object sender, pjsip4net.Accounts.AccountStateChangedEventArgs e)
         {
-            //throw new System.NotImplementedException();
+            Trace.WriteLine(e.StatusText);
         }
 
         private void CallManager_Ring(object sender, pjsip4net.Calls.RingEventArgs e)
         {
-            //throw new System.NotImplementedException();
+            Trace.WriteLine(e.CallId);
         }
 
         private void CallManager_IncomingDtmfDigit(object sender, pjsip4net.Calls.DtmfEventArgs e)
         {
-            //throw new System.NotImplementedException();
+            Trace.WriteLine("{e.CallId} {e.Digit}");
         }
 
         private void CallManager_IncomingCall(object sender, pjsip4net.Core.Utils.EventArgs<ICall> e)
         {
-            //throw new System.NotImplementedException();
+            Trace.WriteLine("{e.Data}");
         }
 
         private void CallManager_CallTransfer(object sender, pjsip4net.Calls.CallTransferEventArgs e)
         {
-           // throw new System.NotImplementedException();
+            Trace.WriteLine(e.Destination);
         }
 
         private void CallManager_CallStateChanged(object sender, pjsip4net.Calls.CallStateChangedEventArgs e)
         {
-           // throw new System.NotImplementedException();
+            Trace.WriteLine(e.InviteState);
         }
 
         private void CallManager_CallRedirected(object sender, pjsip4net.Calls.CallRedirectedEventArgs e)
         {
-          //  throw new System.NotImplementedException();
+            Trace.WriteLine(e.Target);
         }
 
         private void Ua_Log(object sender, pjsip4net.LogEventArgs e)
         {
-          //  throw new System.NotImplementedException();
+            Trace.WriteLine(e.Data);
         }
 
         public bool Stop()
