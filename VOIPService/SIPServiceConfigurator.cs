@@ -100,6 +100,46 @@ namespace VOIPService
             return this;
         }
 
+        public SIPServiceConfigurator WithTcpSipTransport()
+        {
+            cfg = cfg.WithSipTransport(o =>
+            {
+                return new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
+                (pjsip4net.Core.TransportType.Tcp, new pjsip4net.Core.Data.TransportConfig()
+                {
+                    // BoundAddress=,
+                    //  Port=,
+                    //   PublicAddress=,
+                    //    TlsSetting=new pjsip4net.Core.Data.TlsConfig()
+                    //    {
+                    //         CAListFile 
+                    //    }
+                });
+            });
+
+            return this;
+        }
+        public SIPServiceConfigurator WithUdpSipTransport()
+        {
+            cfg = cfg.WithSipTransport(o =>
+            {
+                return new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
+                (pjsip4net.Core.TransportType.Udp, new pjsip4net.Core.Data.TransportConfig()
+                {
+                    // BoundAddress=,
+                    //  Port=,
+                    //   PublicAddress=,
+                    //    TlsSetting=new pjsip4net.Core.Data.TlsConfig()
+                    //    {
+                    //         CAListFile 
+                    //    }
+                });
+            });
+
+            return this;
+        }
+
+
         public SIPServiceConfigurator AddOutboundProxy(Uri sipUri)
         {
             cfg = cfg.With(o =>

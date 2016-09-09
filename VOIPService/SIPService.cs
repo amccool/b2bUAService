@@ -38,12 +38,14 @@ namespace VOIPService
             {
                 //return o.At("doink").WithExtension("alex.mccool").WithPassword("password").Register();
                 //return o.At("officesip.local").WithExtension("rb-test").WithPassword(string.Empty).Register();
-                return o.At("devint.dev-r5ead.net").WithExtension("phoneservice").WithPassword(string.Empty).Register();
+                return o.At("doink").WithExtension("phoneservice").WithPassword(string.Empty).Register();
             });
 
+            ua.AccountManager.DefaultAccount = account;
 
-            var call = ua.CallManager.MakeCall(
-                x => x.To("998101").At("devint.dev-r5ead.net").From(account)
+
+             var call = ua.CallManager.MakeCall(
+                x => x.To("998101").At("doink").From(account)
             //.Through(_args.Through)
             //.From(_agent.AccountManager.GetAccountById(Convert.ToInt32(_args.From)))
             .Call());

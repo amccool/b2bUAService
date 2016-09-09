@@ -16,21 +16,5 @@ namespace VOIPService
             self.ConstructUsing((a) => configurator.Build());
             return self;
         }
-
-
-        //public static ServiceConfigurator<T> ConstructUsing<T, TC>(this ServiceConfigurator<T> self, Action<TC> configure) 
-        //    where T : class
-        //    where TC : IBuilder<T>, new()
-        //{
-        //    var configurator = new TC();
-        //    configure(configurator);
-
-        //    var x = configurator.Build();
-
-        //    self.ConstructUsing((y) => x);
-
-        //    return self;
-        //}
-
     }
 }

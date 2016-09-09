@@ -18,8 +18,11 @@ namespace VOIPService
                     s.ConstructUsing(sc =>
                     {
                         //sc.UseConfig();
-                        sc.UseTcp();
-                        sc.UseUdp();  // use only tcp OR udp , not both
+                        //sc.UseTcp();
+                        //sc.UseUdp();  // use only tcp OR udp , not both
+                        sc.WithUdpSipTransport();
+                        //sc.WithTcpSipTransport();
+
                     });
 
 
