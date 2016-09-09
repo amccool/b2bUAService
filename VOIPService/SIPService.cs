@@ -3,6 +3,7 @@ using pjsip4net.Core.Configuration;
 using pjsip4net.Interfaces;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace VOIPService
 {
@@ -16,7 +17,7 @@ namespace VOIPService
         }
 
 
-        public bool Start()
+        public async Task<bool> Start()
         {
 
             ua.Log += Ua_Log;
@@ -95,7 +96,7 @@ namespace VOIPService
             Trace.WriteLine(e.Data);
         }
 
-        public bool Stop()
+        public async Task<bool> Stop()
         {
             if (ua != null)
             { ua.Destroy(); }

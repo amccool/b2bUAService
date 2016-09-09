@@ -17,18 +17,15 @@ namespace VOIPService
                 {
                     s.ConstructUsing(sc =>
                     {
-                        //sc.UseConfig();
-                        //sc.UseTcp();
-                        //sc.UseUdp();  // use only tcp OR udp , not both
-                        sc.WithUdpSipTransport();
-                        //sc.WithTcpSipTransport();
+                        sc.WithTcpSipTransport();
+                        sc.WithUdpSipTransport();// use only tcp OR udp , not both, basically only the last one is used
 
                     });
 
 
-                    s.WhenStarted(service => service.Start());
+                    s.WhenStarted(async service => await service.Start());
 
-                    s.WhenStopped(service => service.Stop());
+                    s.WhenStopped(async service => await service.Stop());
                     //s.WithNancyEndpoint(x, c =>
                     //{
                     //    c.AddHost(port: 8080);

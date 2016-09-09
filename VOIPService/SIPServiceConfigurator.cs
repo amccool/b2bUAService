@@ -50,55 +50,55 @@ namespace VOIPService
             return this;
         }
 
-        public SIPServiceConfigurator UseTcp()
-        {
-            cfg = cfg.With(o =>
-            {
-                Socket sock = new Socket(AddressFamily.InterNetwork,                         SocketType.Stream, ProtocolType.Tcp);
-                sock.Bind(new IPEndPoint(IPAddress.Any, 0)); // Pass 0 here.
-                var tcpPort = ((IPEndPoint)sock.LocalEndPoint).Port;
-                sock.Dispose();
+        //public SIPServiceConfigurator UseTcp()
+        //{
+        //    cfg = cfg.With(o =>
+        //    {
+        //        Socket sock = new Socket(AddressFamily.InterNetwork,                         SocketType.Stream, ProtocolType.Tcp);
+        //        sock.Bind(new IPEndPoint(IPAddress.Any, 0)); // Pass 0 here.
+        //        var tcpPort = ((IPEndPoint)sock.LocalEndPoint).Port;
+        //        sock.Dispose();
 
-                var tcpTransportType = new pjsip4net.Core.Data.TransportConfig()
-                {
-                    BoundAddress = "0.0.0.0",
-                    Port = (uint)tcpPort,
-                    PublicAddress = "0.0.0.0",
-                };
+        //        var tcpTransportType = new pjsip4net.Core.Data.TransportConfig()
+        //        {
+        //            BoundAddress = "0.0.0.0",
+        //            Port = (uint)tcpPort,
+        //            PublicAddress = "0.0.0.0",
+        //        };
 
-                var tcp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
-                    (pjsip4net.Core.TransportType.Tcp, tcpTransportType);
-                o.RegisterTransport(tcp);
-            });
+        //        var tcp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
+        //            (pjsip4net.Core.TransportType.Tcp, tcpTransportType);
+        //        o.RegisterTransport(tcp);
+        //    });
 
-            return this;
-        }
-
-
-        public SIPServiceConfigurator UseUdp()
-        {
-            cfg = cfg.With(o =>
-            {
-                Socket socku = new Socket(AddressFamily.InterNetwork,                         SocketType.Dgram, ProtocolType.Udp);
-                socku.Bind(new IPEndPoint(IPAddress.Any, 0)); // Pass 0 here.
-                var udpPort = ((IPEndPoint)socku.LocalEndPoint).Port;
-                socku.Dispose();
+        //    return this;
+        //}
 
 
-                var udpTransportType = new pjsip4net.Core.Data.TransportConfig()
-                {
-                    BoundAddress = "0.0.0.0",
-                    Port = (uint)udpPort,
-                    PublicAddress = "0.0.0.0",
-                };
+        //public SIPServiceConfigurator UseUdp()
+        //{
+        //    cfg = cfg.With(o =>
+        //    {
+        //        Socket socku = new Socket(AddressFamily.InterNetwork,                         SocketType.Dgram, ProtocolType.Udp);
+        //        socku.Bind(new IPEndPoint(IPAddress.Any, 0)); // Pass 0 here.
+        //        var udpPort = ((IPEndPoint)socku.LocalEndPoint).Port;
+        //        socku.Dispose();
 
-                var udp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
-                        (pjsip4net.Core.TransportType.Udp, udpTransportType);
-                o.RegisterTransport(udp);
-            });
 
-            return this;
-        }
+        //        var udpTransportType = new pjsip4net.Core.Data.TransportConfig()
+        //        {
+        //            BoundAddress = "0.0.0.0",
+        //            Port = (uint)udpPort,
+        //            PublicAddress = "0.0.0.0",
+        //        };
+
+        //        var udp = new pjsip4net.Core.Utils.Tuple<pjsip4net.Core.TransportType, pjsip4net.Core.Data.TransportConfig>
+        //                (pjsip4net.Core.TransportType.Udp, udpTransportType);
+        //        o.RegisterTransport(udp);
+        //    });
+
+        //    return this;
+        //}
 
         public SIPServiceConfigurator WithTcpSipTransport()
         {
